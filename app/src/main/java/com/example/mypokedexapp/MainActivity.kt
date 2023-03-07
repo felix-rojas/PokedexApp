@@ -1,6 +1,7 @@
 package com.example.mypokedexapp
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,7 +51,7 @@ class MainActivity: Activity() {
             LinearLayoutManager.VERTICAL,
             false)
         binding.RVPokemon.layoutManager = linearLayoutManager
-        adapter.PokemonAdapter(dataForList)
+        adapter.PokemonAdapter(dataForList,this)
         binding.RVPokemon.adapter = adapter
     }
 
