@@ -2,10 +2,14 @@ package com.example.mypokedexapp
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mypokedexapp.PokemonAdapter
 import com.example.mypokedexapp.PokemonBase
 import com.example.mypokedexapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 //activity - layout connection
 
@@ -20,6 +24,7 @@ class MainActivity: Activity() {
         super.onCreate(savedInstanceState)
         initializeBinding()
         setUpRecyclerView(testData())
+        getPokemonList()
     }
 
     private fun initializeBinding() {
@@ -49,5 +54,14 @@ class MainActivity: Activity() {
         binding.RVPokemon.adapter = adapter
     }
 
+    private fun getPokemonList(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val pokemonRepository = PokemonRepository()
+            val result:PokedexObject? = pokemonRepository.getPokemonList(Constants.MAX_POKEMON_NUMBER)
+            Log.d("Salida", result?.count.toString())
+            CoroutineScope(Dispatchers.Main).launch {
+                setUpRecyclerView(result?.results!!)
+            }
+        }}
 
 }
