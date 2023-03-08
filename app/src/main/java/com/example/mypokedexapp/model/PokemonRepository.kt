@@ -1,11 +1,11 @@
-package com.example.mypokedexapp
+package com.example.mypokedexapp.model
 
 import com.example.mypokedexapp.pokemon.Pokemon
 
 class PokemonRepository() {
-    private lateinit var api:PokemonAPIService
+    private lateinit var api: PokemonAPIService
 
-    suspend fun getPokemonList(limit:Int):PokedexObject?{
+    suspend fun getPokemonList(limit:Int): PokedexObject?{
         api = NetworkModuleDI()
         return try{
             api.getPokemonList(limit)

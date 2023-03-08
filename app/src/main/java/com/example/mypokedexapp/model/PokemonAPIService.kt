@@ -1,4 +1,4 @@
-package com.example.mypokedexapp
+package com.example.mypokedexapp.model
 
 import com.example.mypokedexapp.pokemon.Pokemon
 import retrofit2.http.GET

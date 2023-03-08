@@ -1,4 +1,4 @@
-package com.example.mypokedexapp
+package com.example.mypokedexapp.adapters.viewholders
 
 import android.content.Context
 import android.widget.ImageView
@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.example.mypokedexapp.model.PokemonBase
+import com.example.mypokedexapp.model.PokemonRepository
 import com.example.mypokedexapp.databinding.ItemPokemonBinding
 import com.example.mypokedexapp.pokemon.Pokemon
 import kotlinx.coroutines.CoroutineScope
