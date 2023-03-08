@@ -24,7 +24,6 @@ class MainActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeBinding()
-        setUpRecyclerView(testData())
         getPokemonList()
     }
 
