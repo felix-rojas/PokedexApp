@@ -7,17 +7,18 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.mypokedexapp.model.PokemonBase
-import com.example.mypokedexapp.model.PokemonRepository
+import com.example.mypokedexapp.data.network.model.PokemonBase
+import com.example.mypokedexapp.data.PokemonRepository
+import com.example.mypokedexapp.data.network.model.pokemon.Pokemon
 import com.example.mypokedexapp.databinding.ItemPokemonBinding
-import com.example.mypokedexapp.pokemon.Pokemon
+import com.example.mypokedexapp.domain.PokemonInfoRequirement
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PokemonViewHolder(private val binding: ItemPokemonBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: PokemonBase, context: Context){
+    fun bind(item: com.example.mypokedexapp.data.network.model.PokemonBase, context: Context){
         binding.TVName.text = item.name
         getPokemonInfo(item.url,binding.IVPhoto,context)
     }
@@ -28,8 +29,8 @@ class PokemonViewHolder(private val binding: ItemPokemonBinding) : RecyclerView.
         val pokemonNumber:Int = Integer.parseInt(pokemonStringNumber)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val pokemonRepository = PokemonRepository()
-            val result: Pokemon? = pokemonRepository.getPokemonInfo(pokemonNumber)
+            val pokemonInfoRequirement = PokemonInfoRequirement()
+            val result: Pokemon? = pokemonInfoRequirement(pokemonNumber)
             CoroutineScope(Dispatchers.Main).launch {
                 val urlImage = result?.sprites?.other?.official_artwork?.front_default.toString()
 

@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mypokedexapp.model.PokemonBase
+import com.example.mypokedexapp.data.network.model.PokemonBase
 import com.example.mypokedexapp.adapters.viewholders.PokemonViewHolder
 import com.example.mypokedexapp.databinding.ItemPokemonBinding
 
